@@ -1,0 +1,1 @@
+curl -s https://raw.githubusercontent.com/mattrobenolt/jinja2-cli/master/samples/sample.json | lm-jinja2 ./assets/sample.jinja2

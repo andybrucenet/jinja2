@@ -1,0 +1,19 @@
+#!/bin/bash
+# lm-jinja2 ABr, 201704
+# Run jinja2 from container
+
+# mounts current folder
+g_docker_image="${LM_JINJA2_IMAGE:-andybrucenet/jinja2:latest}"
+
+## parameter 1: template file
+#g_template_file="$1"; shift
+#[ x"$g_template_file" = x ] && echo 'Pass in template file (relative to current directory)'
+
+# we *assume* that we mount the current folder and /tmp
+#  -e TEMPLATE=$g_template_file \
+#  -e "PGID=$(id -g)" -e "PUID=$(id -u)" \
+#set -x
+docker run --rm -i -e HOME \
+  -v "$(PWD):/data" -v "/tmp:/tmp" \
+  $g_docker_image "$@"
+
